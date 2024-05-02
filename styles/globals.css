@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.Post{
+    min-width: 600px;
+    min-height: 600px;
+    box-shadow: 0 0 5px 2px #514f4c;
+}
+.box-anim{
+    animation: glow 8s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px #514f4c;
+    }
+    100% {
+        box-shadow: 0 0 5px 2px #514f4c;
+    }
+}
+
+.TagLabel {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    background-color: #b1d1f3;
+    
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    transition: background-color 0.3s; 
+}
+
+.ReactTags__tag:hover {
+    background-color: #0056b3;
+}
+
+.TagCloseButton {
+    margin-left: 8px;
+    cursor: pointer;
+}
+
