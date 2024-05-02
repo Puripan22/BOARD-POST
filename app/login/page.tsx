@@ -4,12 +4,28 @@ import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 import { Textarea } from "@nextui-org/input";
 import { Card } from "@nextui-org/card";
-import React from "react";
+import React, { useState , useCallback}  from "react";
 import { EyeFilledIcon } from "@/app/icon/EyeFilledIcon";
 import { EyeSlashFilledIcon } from "@/app/icon/EyeSlashFilledIcon";
 import Link from "next/link";
+import axios from "axios"
 
 export default function LoginPage() {
+  const [username , setUsername] = useState("");
+  const [password , setPassword] = useState("");
+  const login = useCallback(async () => {
+    try {
+        console.log( username, password)
+        const a =  await axios.post('http://localhost:8000/api/login', {
+             username, password
+        });
+        console.log(a)
+        
+    } catch (error) {
+        console.error('login error:', error);
+        // Handle registration error, display error message to user
+    }
+}, [ username, password]);
   const [isVisible, setIsVisible] = React.useState(false);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
@@ -25,12 +41,16 @@ export default function LoginPage() {
             type="text"
             label="Username"
             className="w-2/3 h-full "
+            onChange={(e: any) => setUsername(e.target.value)}
+            value={username}
           />
         </div>
         <div className="flex flex-col  w-full h-1/3  pt-16 items-center">
           <Input
             variant="bordered"
             label="Password"
+            onChange={(e: any) => setPassword(e.target.value)}
+            value={password}
             endContent={
               <button
                 className="focus:outline-none"
@@ -50,8 +70,8 @@ export default function LoginPage() {
         </div>
         <div className="flex w-full h-2/3  pt-14 justify-center ">
           <div className="flex w-full h-full    ">
-            <Link href="/" className="w-full h-full justify-end flex pr-4">
-              <Button type="submit" className="w-3/5  h-14 " href="/">
+            <Link href="#" className="w-full h-full justify-end flex pr-4">
+              <Button type="submit" className="w-3/5  h-14 " href="/" onClick={login}>
                 Login
               </Button>
             </Link>

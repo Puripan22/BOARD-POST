@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 //const anth_c = require("controllers/auth_c.js");
-const express = require("express")
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
 const AuthRoutes = require("./routes/auth")
@@ -16,6 +17,7 @@ mongoose
 
 app.use(express.json());   
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
       
 app.use("/api", AuthRoutes);
 
