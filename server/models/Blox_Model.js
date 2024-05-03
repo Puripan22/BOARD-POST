@@ -15,7 +15,7 @@ const bloxSchema = mongoose.Schema(
         },
         by:{
             type: String,
-            require: false
+            require: true
         }
     }
 )

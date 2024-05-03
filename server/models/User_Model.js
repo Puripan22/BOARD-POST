@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { type } = require("os");
 const userSchema = mongoose.Schema(
     {
         Username:{
@@ -12,6 +13,10 @@ const userSchema = mongoose.Schema(
         Password:{
             type:String,
             require: true,
+        },
+        Token:{
+            type:String,
+            require:true
         }
         
     }
