@@ -1,3 +1,4 @@
+"use client";
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -11,7 +12,6 @@ import { Button } from "@nextui-org/button";
 import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
-
 
 import { link as linkStyles } from "@nextui-org/theme";
 
@@ -30,36 +30,25 @@ import {
 
 import { Logo } from "@/components/icons";
 import { User } from "@nextui-org/user";
+import { useEffect, useState, useCallback } from "react";
+import axios from "axios";
 
 export const Navbar = () => {
-  /*const searchInput = (
-		<Input
-			aria-label="Search"
-			classNames={{
-				inputWrapper: "bg-default-100",
-				input: "text-sm",
-			}}
-			endContent={
-				<Kbd className="hidden lg:inline-block" keys={["command"]}>
-					K
-				</Kbd>
-			}
-			labelPlacement="outside"
-			placeholder="Search..."
-			startContent={
-				<SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-			}
-			type="search"
-		/>
-	);*/
+  const [username, setUsername] = useState("");
+  
+
+  const handleLogout = () => {
+    // ลบข้อมูลการเข้าสู่ระบบ (เช่น token) จาก local storage หรือ state ตามที่คุณใช้
+    // หลังจากลบข้อมูลเสร็จสิ้น ให้เปลี่ยนเส้นทางไปยังหน้า login หรือหน้าหลัก (ตามที่คุณต้องการ)
+    //router.push('/'); // เปลี่ยนเส้นทางไปยังหน้า login
+  };
 
   return (
     <NextUINavbar maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex justify-start items-center gap-1" href="/">
-            <Logo />
-            <p className="font-bold text-inherit">BOARD CHAT</p>
+            <p className="font-bold text-inherit">BOARD POSTS</p>
           </NextLink>
         </NavbarBrand>
         <ul className="hidden lg:flex gap-4 justify-start ml-2">
@@ -90,9 +79,14 @@ export const Navbar = () => {
         <NavbarItem className="hidden lg:flex"></NavbarItem>
         <NavbarItem className="hidden md:flex">
           <User
-            name="UserName"
+            name={username}
             description={
-              <Button href="#" size="sm" className=" h-6" >
+              <Button
+                href="/login"
+                size="sm"
+                className=" h-6"
+                onClick={handleLogout}
+              >
                 Logout
               </Button>
             }

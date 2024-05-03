@@ -4,28 +4,69 @@ import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 import { Textarea } from "@nextui-org/input";
 import { Card } from "@nextui-org/card";
-import React, { useState , useCallback}  from "react";
+import React, { useState , useCallback , useEffect}  from "react";
 import { EyeFilledIcon } from "@/app/icon/EyeFilledIcon";
 import { EyeSlashFilledIcon } from "@/app/icon/EyeSlashFilledIcon";
 import Link from "next/link";
 import axios from "axios"
+import Swal from "sweetalert2";
+//import { useRouter } from 'next/router';
+
 
 export default function LoginPage() {
   const [username , setUsername] = useState("");
   const [password , setPassword] = useState("");
+  const [user, setUser] = useState("");
+  //const router = useRouter();
   const login = useCallback(async () => {
     try {
         console.log( username, password)
         const a =  await axios.post('http://localhost:8000/api/login', {
              username, password
         });
-        console.log(a)
+        if (a.data === "Welcome") {
+          localStorage.setItem('username', user);
+          Swal.fire({
+            icon: 'success',
+            title: 'Login Success',
+            text: 'You have successfully login!',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            window.location.href = '/';        
+          });
+      } else if (a.data === "Password PID") {
+          
+          Swal.fire({
+              icon: 'error',
+              title: 'Login Error',
+              text: 'Invalid password. Please try again.'
+          });
+      } else {
+         
+          Swal.fire({
+              icon: 'error',
+              title: 'Login Error',
+              text: 'Invalid username. Please try again.'
+          });
+      }
+          
+         
         
     } catch (error) {
         console.error('login error:', error);
-        // Handle registration error, display error message to user
+        Swal.fire({
+          icon: 'error',
+          title: 'Login Error',
+          text: 'An error occurred during login. Please try again later.'
+        });
     }
 }, [ username, password]);
+useEffect(() => {
+  // Retrieve username from local storage
+  const storedUsername = localStorage.getItem('username');
+  setUsername(storedUsername || '');
+}, []);
   const [isVisible, setIsVisible] = React.useState(false);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
@@ -71,15 +112,15 @@ export default function LoginPage() {
         <div className="flex w-full h-2/3  pt-14 justify-center ">
           <div className="flex w-full h-full    ">
             <Link href="#" className="w-full h-full justify-end flex pr-4">
-              <Button type="submit" className="w-3/5  h-14 " href="/" onClick={login}>
+              <Button type="submit" className="w-3/5  h-14 " onClick={login}>
                 Login
               </Button>
             </Link>
           </div>
           <div className="flex w-full h-full pl-4  ">
-            <Link href="/signin" className="w-full h-full justify-start flex  ">
-              <Button type="submit" className="w-3/5 h-14 " href="/sigin">
-                Sign in
+            <Link href={`/navbar?username=${username}`} passHref className="w-full h-full justify-start flex  ">
+              <Button type="submit" className="w-3/5 h-14 " >
+                Sign up
               </Button>
             </Link>
           </div>

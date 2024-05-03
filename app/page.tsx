@@ -87,7 +87,7 @@ export default function Home() {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           
-          <Card className="box-anim m-4 h-1/6 w-2/3 p-2 flex flex-col flex-wrap">
+          <Card className="box-anim m-4 h-48 w-2/3 p-2 flex flex-col flex-wrap">
             <TagInput />
           </Card>
         </Card>
