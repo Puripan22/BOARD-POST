@@ -7,6 +7,7 @@ import { Navbar } from "@/components/navbar";
 import { Link } from "@nextui-org/link";
 import clsx from "clsx";
 import ScrollToTopButton  from "@/components/ScrollToTopButton"
+import StarsCanvas from "@/components/StarBackground";
 
 export const metadata: Metadata = {
 	title: {
@@ -40,12 +41,12 @@ export default function RootLayout({
 					"min-h-screen bg-background font-sans antialiased ",
 					fontSans.variable
 				)}
-				
 			>
-				<Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-					<div className="relative flex flex-col h-screen ">
+				<Providers themeProps={{ attribute: "class", defaultTheme: "dark" }} >
+					<div className="relative flex flex-col h-screen " >
 						<Navbar />
-						<main className=" pl-2 pr-2 pt-2  pb-2 flex-grow ">
+						<StarsCanvas/>
+						<main className=" pl-2 pr-2 pt-2  pb-2 flex-grow " >
 							{children}
 						</main>
 						<ScrollToTopButton/>

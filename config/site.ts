@@ -16,10 +16,10 @@ export const siteConfig = {
       label: "Sign up",
       href: "/signup",
     },
-    {
-      label: "Your Posts",
-      href: "/blog",
-    },
+    // {
+    //   label: "Your Posts",
+    //   href: "/blog",
+    // },
     {
       label: "Add Posts",
       href: "/form",

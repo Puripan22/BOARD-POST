@@ -101,11 +101,11 @@ export default function Home() {
                 <p className=" overflow-y-auto">{post.content}</p>
               </CardBody>
                <Card className="m-2 w-1/2 h-12  flex flex-row">
-                {post.tag.map((tags , index) => (
+                {/* {post.tag.map((tags , index) => (
                   <Card className=" w-1/4 h-2/3 m-2 justify-center items-center border-gray-500 border-2 rounded-xl " key={index}>
                     {tags}
                   </Card>
-                ))}
+                ))} */}
               </Card> 
 
               <p className="pb-4 pl-4 text-sm text-gray-500">
