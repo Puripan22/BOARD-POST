@@ -7,7 +7,6 @@ import { Navbar } from "@/components/navbar";
 import { Link } from "@nextui-org/link";
 import clsx from "clsx";
 import ScrollToTopButton  from "@/components/ScrollToTopButton"
-import StarsCanvas from "@/components/StarBackground";
 
 export const metadata: Metadata = {
 	title: {

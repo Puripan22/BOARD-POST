@@ -14,20 +14,16 @@ import axios from 'axios';
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [posts, setPosts] = useState([]);
-  const fetchPosts = async () => {
-    try {
-      const response = await axios.get("http://localhost:8000/api/GetPost");
-      setPosts(response.data);
-      console.log(response)
-    } catch (error) {
-      console.error("Error fetching posts:", error);
-    }
-  };
-
+  const [posts, setPosts] = useState<any>(null);
   useEffect(() => {
-    fetchPosts();
-  }, []);
+    axios.get('"http://localhost:8000/api/GetPost",')
+      .then(response => {
+        setPosts(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []); 
 
   const filteredPosts = posts.filter((posts) =>
     posts.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -93,17 +89,17 @@ export default function Home() {
           </Card>
         </Card>
         <div className="w-3/4 flex flex-wrap  border-gray-500 border-2 border-l-0 justify-center  max-h-full rounded-xl rounded-l-none ">
-          {filteredPosts.map((post) => (
-            <Card key={post.id} className="Post m-11">
+          {filteredPosts.map((posts) => (
+            <Card key={posts.id} className="Post m-11">
               <CardHeader>
-                <Avatar text={post.by.charAt(0).toUpperCase()} />
-                <h2 className="font-bold text-xl ml-4">{post.title}</h2>
+                <Avatar text={posts.by.charAt(0).toUpperCase()} />
+                <h2 className="font-bold text-xl ml-4">{posts.title}</h2>
               </CardHeader>
               <CardBody>
-                <p className=" overflow-y-auto">{post.content}</p>
+                <p className=" overflow-y-auto">{posts.content}</p>
               </CardBody>
               {/* <Card className="m-2 w-1/2 h-12  flex flex-row">
-                {posts["tag"].map((tags , index) => (
+                {posts.tag.map((tags , index) => (
                   <Card className=" w-1/4 h-2/3 m-2 justify-center items-center border-gray-500 border-2 rounded-xl " key={index}>
                     {tags}
                   </Card>
@@ -111,7 +107,7 @@ export default function Home() {
               </Card> */}
 
               <p className="pb-4 pl-4 text-sm text-gray-500">
-                Posted by {post.by}
+                Posted by {posts.by}
               </p>
             </Card>
           ))}

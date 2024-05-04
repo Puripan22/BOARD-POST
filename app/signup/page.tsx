@@ -108,6 +108,6 @@ export default function SignupPage() {
             </Link>
         </div>
       </Card>
-    </div>
+    </div>    
   );
 }

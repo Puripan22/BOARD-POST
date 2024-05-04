@@ -32,18 +32,25 @@ export default function FormPage() {
   const handleDelete = (tagToDelete: string) => {
     setTags(tags.filter((tag) => tag !== tagToDelete));
   };
-  const [title, setTitle] = useState("");
-  const [tag, setTag] = useState("");
-  const [content, setContent] = useState("");
-  const [by, setBy] = useState("");
+  const [title_, setTitle] = useState("");
+  const [tag_, setTag] = useState("");
+  const [content_, setContent] = useState("");
+  const [user_, setUser] = useState("");
+  useEffect(() => {
+    const username = localStorage.getItem('username');
+    if (username) {
+      setUser(username);
+    }
+  }, []);
   const SubmitPost = async () => {
     try {
       const response = await axios.post("http://localhost:8000/api/create_b", {
-        title,
-        tag,
-        content,
-        by
+        title_,
+        tag_,
+        content_,
+        user_,
       });
+    
       Swal.fire({
         icon: "success",
         title: "add Post Success",
@@ -62,13 +69,6 @@ export default function FormPage() {
       });
     }
   };
-  useEffect(() => {
-    const username = localStorage.getItem('username');
-    if (username) {
-      setBy(username);
-    }
-  }, []);
-
   return (
     <div className="h-full w-full justify-center items-center flex flex-col border-gray-400 border-2 rounded-xl">
       <Card className=" box-anim  w-2/5 flex border-gray-500 bg-blend-normal border-2 h-5/6 flex-col items-center rounded-xl ">
