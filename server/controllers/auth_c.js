@@ -128,9 +128,10 @@ exports.create_b = async (req, res) => {
                 by: user_
             });
             
+            
         //console.log("Happy")
         // Save the new user to the database
-        //await newblox.save();
+        await newblox.save();
         return res.json(
             newblox
         )
