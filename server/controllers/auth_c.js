@@ -105,18 +105,34 @@ exports.login = async (req, res) => {
 exports.create_b = async (req, res) => {
     try {
         const { title_, tag_, content_, user_ } = req.body
-        const newblox = new blox_components
+        
+        
+        
+
+            if (!title_) {
+                return res.json(
+                    "Title is required"
+                )
+            }
+            if (!content_) {
+                return res.json(
+                    "Content is required"
+                )
+            }
+
+            const newblox = new blox_components
             ({
                 title: title_,
                 tag: tag_,
                 content: content_,
                 by: user_
             });
+            
         //console.log("Happy")
         // Save the new user to the database
-        await newblox.save();
+        //await newblox.save();
         return res.json(
-            "Done!"
+            newblox
         )
 
     } catch (error) {
