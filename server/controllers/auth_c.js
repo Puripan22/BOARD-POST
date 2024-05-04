@@ -137,9 +137,9 @@ exports.create_b = async (req, res) => {
 
 exports.GetPost = async (req, res) => {
     try {
-
-
         const AllPost = await blox_components.find({});
+        
+        
         return res.json(
             AllPost
         )
@@ -156,6 +156,19 @@ exports.MinePost = async (req, res) => {
         const Data = await blox_components.find({ by: UserID });
         return res.json(
             Data
+        )
+    } catch (error) {
+        console.error('Error retrieving blox components:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+}
+
+exports.WhereTag = async (req, res) => {
+    try {
+        const { tag } = req.body;
+        const PoatByTag = await blox_components.find({ tag:tag });
+        return res.json(
+            PoatByTag
         )
     } catch (error) {
         console.error('Error retrieving blox components:', error);
