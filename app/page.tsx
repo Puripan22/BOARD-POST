@@ -12,6 +12,7 @@ import TagInput from "@/components/TagInput";
 import { Tag, TagLabel, TagCloseButton } from "@chakra-ui/react";
 import axios from "axios";
 import { Chip } from "@nextui-org/chip";
+import Slideshow from "@/components/autoslide";
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -36,6 +37,7 @@ export default function Home() {
       )
     : [];
 
+
   const [tags, setTags] = useState<string[]>([]);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -58,6 +60,7 @@ export default function Home() {
       console.error("Error searching for posts by tag:", error);
     }
   };
+
 
   
 
@@ -107,6 +110,9 @@ export default function Home() {
             ))}
             <Input placeholder="tags" onKeyDown={handleKeyDown} className="" />
           </Card>
+           <Card className=" h-56 w-3/4 mt-20">
+              <Slideshow/>
+            </Card>
         </Card>
         <div className="w-3/4 flex flex-wrap  border-gray-500 border-2 border-l-0 justify-center  max-h-full rounded-xl rounded-l-none ">
           {filteredPosts &&
