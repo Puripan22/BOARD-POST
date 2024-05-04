@@ -5,7 +5,7 @@ const { signup,login,create_b,GetPost,MinePost } = require("../controllers/auth_
 routor.post("/login",login);
 routor.post("/signup",signup);
 routor.post("/create_b",create_b);
-routor.post("/GetPost",GetPost);
+routor.get("/GetPost",GetPost);
 routor.post("/MinePost",MinePost);
 module.exports = routor;
 

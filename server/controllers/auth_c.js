@@ -79,7 +79,7 @@ exports.login = async (req, res) => {
                     {
                         expiresIn: "2h"
                     }
-                )
+                );
                 user.token = token;
                 return res.json(
                     user
@@ -105,32 +105,25 @@ exports.login = async (req, res) => {
 exports.create_b = async (req, res) => {
     try {
         const { title_, tag_, content_, user_ } = req.body
-        
-        
-        
+        if (!title_) {
+            return res.json(
+                "Title is required"
+            )
+        }
+        if (!content_) {
+            return res.json(
+                "Content is required"
+            )
+        }
 
-            if (!title_) {
-                return res.json(
-                    "Title is required"
-                )
-            }
-            if (!content_) {
-                return res.json(
-                    "Content is required"
-                )
-            }
-
-            const newblox = new blox_components
+        const newblox = new blox_components
             ({
                 title: title_,
                 tag: tag_,
                 content: content_,
                 by: user_
             });
-            
-            
-        //console.log("Happy")
-        // Save the new user to the database
+
         await newblox.save();
         return res.json(
             newblox
@@ -144,9 +137,9 @@ exports.create_b = async (req, res) => {
 
 exports.GetPost = async (req, res) => {
     try {
-
-
         const AllPost = await blox_components.find({});
+        
+        
         return res.json(
             AllPost
         )
