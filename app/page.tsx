@@ -1,5 +1,5 @@
 "use client";
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Card } from "@nextui-org/card";
 import { CardHeader } from "@nextui-org/card";
 import { CardBody } from "@nextui-org/card";
@@ -10,26 +10,30 @@ import { Code } from "@nextui-org/code";
 import { SearchIcon } from "@/components/icons";
 import TagInput from "@/components/TagInput";
 import { Tag, TagLabel, TagCloseButton } from "@chakra-ui/react";
-import axios from 'axios';
+import axios from "axios";
+import { Chip } from "@nextui-org/chip";
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8000/api/GetPost")
-      .then(response => {
-        console.log(response.data)
+    axios
+      .get("http://localhost:8000/api/GetPost")
+      .then((response) => {
+        console.log(response.data);
         setPosts(response.data);
       })
-      .catch(error => {
-        console.error('Error fetching data:', error);
+      .catch((error) => {
+        console.error("Error fetching data:", error);
       });
-  }, []); 
+  }, []);
 
-  const filteredPosts = posts ? posts.filter((post) =>
-    post.title.toLowerCase().includes(searchTerm.toLowerCase())
-  ) : [];
+  const filteredPosts = posts
+    ? posts.filter((post) =>
+        post.title.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : [];
   const [tags, setTags] = useState<string[]>([]);
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -45,7 +49,6 @@ export default function Home() {
   const handleDelete = (tagToDelete: string) => {
     setTags(tags.filter((tag) => tag !== tagToDelete));
   };
- 
 
   //const [selected, setSelected] = useState([]);
 
@@ -69,50 +72,59 @@ export default function Home() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          
+
           <Card className="box-anim m-4 h-48 w-2/3 p-2 flex flex-col flex-wrap">
-          {tags.map((tag) => (
-            <Tag
-              key={tag}
-              size=" md"
-              borderRadius="full"
-              variant="solid"
-              colorScheme="teal"
-              className="TagLabel w-1/3 flex justify-center"
-            >
-              <TagLabel className="">{tag}</TagLabel>
-              <TagCloseButton
-                className="TagCloseButton"
-                onClick={() => handleDelete(tag)}
-              />
-            </Tag>
-          ))}
-          <Input placeholder="tags" onKeyDown={handleKeyDown} className="w-1/4" />
+            {tags.map((tag) => (
+              <Tag
+                key={tag}
+                size=" md"
+                borderRadius="full"
+                variant="solid"
+                colorScheme="teal"
+                className="TagLabel  flex justify-center bg-gradient-to-br from-red-500 to-red-300 border-small border-white/50 shadow-red-500/10"
+              >
+                <TagLabel className="">{tag}</TagLabel>
+                <TagCloseButton
+                  className="TagCloseButton"
+                  onClick={() => handleDelete(tag)}
+                />
+              </Tag>
+            ))}
+            <Input placeholder="tags" onKeyDown={handleKeyDown} className="" />
           </Card>
         </Card>
         <div className="w-3/4 flex flex-wrap  border-gray-500 border-2 border-l-0 justify-center  max-h-full rounded-xl rounded-l-none ">
-          {filteredPosts && filteredPosts.map((post) => (
-            <Card key={post.id} className="Post m-11">
-              <CardHeader>
-                <Avatar text={post.by.charAt(0).toUpperCase()} />
-                <h2 className="font-bold text-xl ml-4">{post.title}</h2>
-              </CardHeader>
-              <CardBody>
-                <p className=" overflow-y-auto">{post.content}</p>
-              </CardBody>
-               <Card className="m-2 w-1/2 h-12  flex flex-row">
-                {/* {post.tag.map((tags , index) => (
-                  <Card className=" w-1/4 h-2/3 m-2 justify-center items-center border-gray-500 border-2 rounded-xl " key={index}>
-                    {tags}
-                  </Card>
-                ))} */}
-              </Card> 
+          {filteredPosts &&
+            filteredPosts.map((post) => (
+              <Card key={post.id} className="Post m-11">
+                <CardHeader className="flex">
+                  <div className="flex w-1/2 justify-start items-center">
+                  <Avatar text={post.by.charAt(0).toUpperCase()} />
+                  <h2 className="font-bold text-xl ml-4">{post.title}</h2>
+                  </div>
+                  <div className="flex w-1/2 justify-end">
+                  <Chip
+                  variant="shadow"
+                  classNames={{
+                    base: "bg-gradient-to-br from-red-500 to-red-300 border-small border-white/50 shadow-red-500/20 m-2 w-1/2 h-12",
+                    content: "drop-shadow shadow-black  ",
+                  }}
+                >
+                  {/* className="m-2 w-1/2 h-12 items-center justify-center  border-gray-500 border-2 rounded-xl" */}
+                  {post.tag}
+                </Chip>
+                </div>
+                </CardHeader>
+                <CardBody>
+                  <p className=" overflow-y-auto">{post.content}</p>
+                </CardBody>
+                
 
-              <p className="pb-4 pl-4 text-sm text-gray-500">
-                Posted by {post.by}
-              </p>
-            </Card>
-          ))}
+                <p className="pb-4 pl-4 text-sm text-gray-500 flex justify-end pr-4">
+                  Posted by {post.by}
+                </p>
+              </Card>
+            ))}
         </div>
       </div>
     </div>

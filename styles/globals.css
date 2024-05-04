@@ -41,3 +41,12 @@
     cursor: pointer;
 }
 
+.italic-right {
+    font-style: italic;
+    transform: skewX(18deg); 
+  }
+
+.italic-left {
+    font-style: italic;
+    transform: skewX(-18deg); 
+}

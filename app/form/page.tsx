@@ -72,7 +72,7 @@ export default function FormPage() {
   return (
     <div className="h-full w-full justify-center items-center flex flex-col border-gray-400 border-2 rounded-xl">
       <Card className=" box-anim  w-2/5 flex border-gray-500 bg-blend-normal border-2 h-5/6 flex-col items-center rounded-xl ">
-        <div className="flex flex-col w-full h-1/4 pt-10 items-center">
+        <div className="flex flex-col w-full h-1/4 pt-8 items-center">
           <label htmlFor="title" className="text-5xl">
             Title
           </label>
@@ -95,10 +95,10 @@ export default function FormPage() {
             onChange={(e) => setContent(e.target.value)}
           />
         </div>
-        <label htmlFor="content" className="text-4xl pt-4">
+        <label htmlFor="content" className="text-4xl pt-8">
             Tag
           </label>
-        <Card className=" h-40 w-96 mt-5 p-2 flex flex-wrap">
+        <Card className="  h-20 w-96 mt-5 p-2 flex flex-wrap justify-center">
           {tags.map((tag) => (
             <Tag
               key={tag}
@@ -106,7 +106,7 @@ export default function FormPage() {
               borderRadius="full"
               variant="solid"
               colorScheme="teal"
-              className="TagLabel w-1/3 flex justify-center"
+              className="TagLabel  flex justify-center"
             >
               <TagLabel className="">{tag}</TagLabel>
               <TagCloseButton
@@ -115,10 +115,10 @@ export default function FormPage() {
               />
             </Tag>
           ))}
-          <Input placeholder="tags" onKeyDown={handleKeyDown} className="w-1/4" onChange={(e) => setTag(e.target.value)}/>
+          <Input placeholder="tags" onKeyDown={handleKeyDown} className="" onChange={(e) => setTag(e.target.value)}/>
         </Card>
         <div className="flex w-full h-1/3  pt-10 justify-center ">
-          <Button type="submit" className="w-1/5 h-1/4 " onClick={SubmitPost}>
+          <Button type="submit" className="w-1/5 h-14 " onClick={SubmitPost}>
             Add Post
           </Button>
         </div>
