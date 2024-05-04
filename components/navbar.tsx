@@ -34,13 +34,13 @@ import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 
 export const Navbar = () => {
-  const [username, setUsername] = useState("");
+  const [ username , setUsename] = useState("")
+  const storedUsername = typeof window !== 'undefined' ? localStorage.getItem('username') : null;
   
 
   const handleLogout = () => {
-    // ลบข้อมูลการเข้าสู่ระบบ (เช่น token) จาก local storage หรือ state ตามที่คุณใช้
-    // หลังจากลบข้อมูลเสร็จสิ้น ให้เปลี่ยนเส้นทางไปยังหน้า login หรือหน้าหลัก (ตามที่คุณต้องการ)
-    //router.push('/'); // เปลี่ยนเส้นทางไปยังหน้า login
+    localStorage.removeItem('username');
+    window.location.href = "/login";
   };
 
   return (
@@ -79,7 +79,7 @@ export const Navbar = () => {
         <NavbarItem className="hidden lg:flex"></NavbarItem>
         <NavbarItem className="hidden md:flex">
           <User
-            name={username}
+            name={storedUsername}
             description={
               <Button
                 href="/login"

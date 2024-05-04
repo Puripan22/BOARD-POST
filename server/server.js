@@ -8,7 +8,7 @@ const AuthRoutes = require("./routes/auth")
 
 //connect
 mongoose
-    .connect('mongodb+srv://poohvs555:1234@cluster0.sabvxtw.mongodb.net/User', {
+    .connect('mongodb+srv://poohvs555:1234@cluster0.sabvxtw.mongodb.net/database', {
         useNewURLParser: true,
         useUnifiedTopology: true,
     }).then(() => console.log("Connected"))
