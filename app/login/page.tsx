@@ -22,9 +22,9 @@ export default function LoginPage() {
       console.log(username, password);
       const response = await axios.post("http://localhost:8000/api/login", {
         username,
-        password,      
+        password,
       });
-      
+
       if (response) {
         localStorage.setItem("username", username);
         Swal.fire({
@@ -35,7 +35,7 @@ export default function LoginPage() {
           timer: 1500,
         }).then(() => {
           window.location.href = "/";
-        });     
+        });
       } else {
         Swal.fire({
           icon: "error",
@@ -101,10 +101,7 @@ export default function LoginPage() {
         </div>
         <div className="flex w-full h-2/3  pt-14 justify-center ">
           <div className="flex w-full h-full    ">
-            <Link
-              href='#'
-              className="w-full h-full justify-end flex pr-4"
-            >
+            <Link href="#" className="w-full h-full justify-end flex pr-4">
               <Button type="submit" className="w-3/5  h-14 " onClick={login}>
                 Login
               </Button>

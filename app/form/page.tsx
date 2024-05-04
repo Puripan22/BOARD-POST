@@ -11,7 +11,7 @@ import { Button } from "@nextui-org/button";
 import { Textarea } from "@nextui-org/input";
 import { Card } from "@nextui-org/card";
 import TagInput from "@/components/TagInput";
-import { useState , useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Tag, TagLabel, TagCloseButton } from "@chakra-ui/react";
@@ -37,7 +37,7 @@ export default function FormPage() {
   const [content_, setContent] = useState("");
   const [user_, setUser] = useState("");
   useEffect(() => {
-    const username = localStorage.getItem('username');
+    const username = localStorage.getItem("username");
     if (username) {
       setUser(username);
     }
@@ -50,7 +50,7 @@ export default function FormPage() {
         content_,
         user_,
       });
-    
+
       Swal.fire({
         icon: "success",
         title: "add Post Success",
@@ -96,8 +96,8 @@ export default function FormPage() {
           />
         </div>
         <label htmlFor="content" className="text-4xl pt-8">
-            Tag
-          </label>
+          Tag
+        </label>
         <Card className="  h-20 w-96 mt-5 p-2 flex flex-wrap justify-center">
           {tags.map((tag) => (
             <Tag
@@ -115,7 +115,12 @@ export default function FormPage() {
               />
             </Tag>
           ))}
-          <Input placeholder="tags" onKeyDown={handleKeyDown} className="" onChange={(e) => setTag(e.target.value)}/>
+          <Input
+            placeholder="tags"
+            onKeyDown={handleKeyDown}
+            className=""
+            onChange={(e) => setTag(e.target.value)}
+          />
         </Card>
         <div className="flex w-full h-1/3  pt-10 justify-center ">
           <Button type="submit" className="w-1/5 h-14 " onClick={SubmitPost}>

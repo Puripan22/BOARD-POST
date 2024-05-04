@@ -12,7 +12,6 @@ import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
 
-
 export default function SignupPage() {
   const [isVisible, setIsVisible] = React.useState(false);
   const [username, setUsername] = useState("");
@@ -29,23 +28,21 @@ export default function SignupPage() {
         password,
       });
       Swal.fire({
-        icon: 'success',
-        title: 'Signup Success',
-        text: 'You have successfully signed up!',
+        icon: "success",
+        title: "Signup Success",
+        text: "You have successfully signed up!",
         showConfirmButton: false,
-        timer: 1500
+        timer: 1500,
       }).then(() => {
-        window.location.href = '/login';        
+        window.location.href = "/login";
       });
-  
     } catch (error) {
       console.error("Signup error:", error);
       Swal.fire({
-        icon: 'error',
-        title: 'Signup Error',
-        text: 'An error occurred while signing up. Please try again later.'
+        icon: "error",
+        title: "Signup Error",
+        text: "An error occurred while signing up. Please try again later.",
       });
-      
     }
   };
   return (
@@ -58,7 +55,6 @@ export default function SignupPage() {
             onClear={() => console.log("input cleared")}
             name="title"
             type="text"
-            
             className="w-2/3 h-full "
             variant="bordered"
             label="Username"
@@ -80,7 +76,6 @@ export default function SignupPage() {
         <div className="flex flex-col  w-full h-1/3  pt-8 items-center">
           <Input
             variant="bordered"
-            
             label="Password"
             endContent={
               <button
@@ -100,14 +95,19 @@ export default function SignupPage() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <div className="flex w-full h-72  pt-8 justify-center ">         
-            <Link href="#" className="w-full h-full justify-center flex  ">
-              <Button type="submit" className="w-2/6 h-1/3 " href="/sigin" onClick={handleSubmit}>
-                Sign in
-              </Button>
-            </Link>
+        <div className="flex w-full h-72  pt-8 justify-center ">
+          <Link href="#" className="w-full h-full justify-center flex  ">
+            <Button
+              type="submit"
+              className="w-2/6 h-1/3 "
+              href="/sigin"
+              onClick={handleSubmit}
+            >
+              Sign in
+            </Button>
+          </Link>
         </div>
       </Card>
-    </div>    
+    </div>
   );
 }
