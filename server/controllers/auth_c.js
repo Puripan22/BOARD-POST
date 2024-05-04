@@ -162,3 +162,16 @@ exports.MinePost = async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 }
+
+exports.WhereTag = async (req, res) => {
+    try {
+        const { tag } = req.body;
+        const PoatByTag = await blox_components.find({ tag:tag });
+        return res.json(
+            PoatByTag
+        )
+    } catch (error) {
+        console.error('Error retrieving blox components:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+}
