@@ -7,6 +7,11 @@
   min-height: 600px;
   box-shadow: 0 0 5px 2px #514f4c;
 }
+
+.CardBody{
+  width: 600px;
+  height: 450px;
+}
 .box-anim {
   animation: glow 8s infinite alternate;
 }

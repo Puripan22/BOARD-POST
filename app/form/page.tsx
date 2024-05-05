@@ -43,7 +43,11 @@ export default function FormPage() {
     }
   }, []);
   const SubmitPost = async () => {
+    
     try {
+      if (!title_ || !tag_ || !content_ || !user_) {
+        throw new Error("Please fill in all required fields.");
+      }
       const response = await axios.post("http://localhost:8000/api/create_b", {
         title_,
         tag_,
@@ -58,7 +62,7 @@ export default function FormPage() {
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {
-        window.location.href = "/blog";
+        window.location.href = "/";
       });
     } catch (error) {
       console.error("Signup error:", error);
@@ -98,7 +102,7 @@ export default function FormPage() {
         <label htmlFor="content" className="text-4xl pt-8">
           Tag
         </label>
-        <Card className="  h-20 w-96 mt-5 p-2 flex flex-wrap justify-center">
+        <Card className="  h-20 w-96 mt-5 p-2 flex flex-wrap justify-center items-center">
           {tags.map((tag) => (
             <Tag
               key={tag}
@@ -106,7 +110,7 @@ export default function FormPage() {
               borderRadius="full"
               variant="solid"
               colorScheme="teal"
-              className="TagLabel  flex justify-center "
+              className="TagLabel  flex justify-center items-center "
             >
               <TagLabel className="">{tag}</TagLabel>
               <TagCloseButton

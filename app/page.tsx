@@ -122,8 +122,8 @@ export default function Home() {
                     </Chip>
                   </div>
                 </CardHeader>
-                <CardBody>
-                  <p className=" overflow-y-auto">{post.content}</p>
+                <CardBody className="CardBody">
+                  <p className=" overflow-y-auto flex flex-warp">{post.content}</p>
                 </CardBody>
 
                 <p className="pb-4 pl-4 text-sm text-gray-500 flex justify-end pr-4">
