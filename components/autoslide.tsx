@@ -14,17 +14,17 @@ const Slideshow = () => {
 
   const zoomInProperties = {
     scale: 1,
-    duration: 5000,
+    duration: 4000,
     transitionDuration: 300,
     infinite: true,
     prevArrow: (
       <div className="ml-10 top-40 md:top-72">
-        <ArrowLeftIcon className="h-8 w-8 text-gray-500 cursor-pointer" />
+        <ArrowLeftIcon className="h-8 w-8 text-white cursor-pointer" />
       </div>
     ),
     nextArrow: (
       <div className="mr-10 top-40 md:top-72">
-        <ArrowRightIcon className="h-8 w-8 text-gray-500 cursor-pointer" />
+        <ArrowRightIcon className="h-8 w-8  text-white cursor-pointer" />
       </div>
     ),
   };
@@ -36,7 +36,7 @@ const Slideshow = () => {
             key={index}
             className="flex justify-center md:items-center items-start w-full h-full relative"
           >
-            <img className="w-full flex justify-center items-center h-full" src={each.src} />
+            <img className="w-full flex justify-center items-center h-full transform translate-y-[-12px]" src={each.src} />
           </div>
         ))}
       </Zoom>

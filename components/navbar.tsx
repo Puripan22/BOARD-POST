@@ -89,7 +89,7 @@ export const Navbar = () => {
               <Button
                 href="/login"
                 size="sm"
-                className=" h-6"
+                className=" h-6 font-extralight"
                 onClick={handleLogout}
               >
                 Logout

@@ -13,11 +13,12 @@ import { Tag, TagLabel, TagCloseButton } from "@chakra-ui/react";
 import axios from "axios";
 import { Chip } from "@nextui-org/chip";
 import Slideshow from "@/components/autoslide";
+import Link from "next/link";
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [posts, setPosts] = useState("");
-  const [searchTag , setSearchTag] = useState("");
+  const [searchedPosts, setSearchedPosts] = useState<any[]>([]);
 
   useEffect(() => {
     axios
@@ -37,32 +38,30 @@ export default function Home() {
       )
     : [];
 
-
   const [tags, setTags] = useState<string[]>([]);
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = async (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ) => {
     if (event.key === "Enter") {
       const newTag = event.currentTarget.value.trim();
       console.log(newTag);
       if (newTag) {
         setTags([...tags, newTag]);
         event.currentTarget.value = "";
-        handleTagSearch(newTag);
+        try {
+          const response = await axios.post(
+            "http://localhost:8000/api/Search",
+            { tag_: newTag }
+          );
+          console.log("Posts found by tag:", response.data);
+          setSearchedPosts(response.data);
+        } catch (error) {
+          console.error("Error searching for posts by tag:", error);
+        }
       }
     }
   };
-
-  const handleTagSearch = async (newTag: string) => {
-    try {
-      const response = await axios.post("http://localhost:8000/api/Search", { tag: newTag });
-      setSearchTag(response.data)
-    } catch (error) {
-      console.error("Error searching for posts by tag:", error);
-    }
-  };
-
-
-  
 
   const handleDelete = (tagToDelete: string) => {
     setTags(tags.filter((tag) => tag !== tagToDelete));
@@ -90,29 +89,16 @@ export default function Home() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-
-          <Card className="box-anim m-4 h-48 w-2/3 p-2 flex flex-col flex-wrap">
-            {tags.map((tag) => (
-              <Tag
-                key={tag}
-                size=" md"
-                borderRadius="full"
-                variant="solid"
-                colorScheme="teal"
-                className="TagLabel  flex justify-center bg-gradient-to-br from-red-500 to-red-300 border-small border-white/50 shadow-red-500/10"
-              >
-                <TagLabel className="">{tag}</TagLabel>
-                <TagCloseButton
-                  className="TagCloseButton"
-                  onClick={() => handleDelete(tag)}
-                />
-              </Tag>
-            ))}
-            <Input placeholder="tags" onKeyDown={handleKeyDown} className="" />
+          
+          <Card className="box-anim m-4 h-14 w-2/3 p-2 flex flex-col flex-wrap justify-center items-center mt-12 cursor-pointer">
+            <Link href="/blog" className="  justify-center items-center text-xl font-extralight">
+            CATEGORY
+            </Link>
           </Card>
-           <Card className=" h-56 w-3/4 mt-20">
-              <Slideshow/>
-            </Card>
+          
+          <Card className=" h-56 w-3/4 mt-24">
+            <Slideshow />
+          </Card>
         </Card>
         <div className="w-3/4 flex flex-wrap  border-gray-500 border-2 border-l-0 justify-center  max-h-full rounded-xl rounded-l-none ">
           {filteredPosts &&
@@ -144,7 +130,11 @@ export default function Home() {
                   Posted by {post.by}
                 </p>
               </Card>
-            ))}
+            ))}     
+           
+            
+          
+            
         </div>
       </div>
     </div>

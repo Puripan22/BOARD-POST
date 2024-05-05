@@ -135,8 +135,8 @@ exports.MinePost = async (req, res) => {
 
 exports.WhereTag = async (req, res) => {
   try {
-    const { tag } = req.body;
-    const PostByTag = await blox_components.find({ tag: tag });
+    const { tag_ } = req.body;
+    const PostByTag = await blox_components.find({ tag: tag_ });
     return res.json(PostByTag);
   } catch (error) {
     console.error("Error retrieving blox components:", error);

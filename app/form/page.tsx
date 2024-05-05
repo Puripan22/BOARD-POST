@@ -106,7 +106,7 @@ export default function FormPage() {
               borderRadius="full"
               variant="solid"
               colorScheme="teal"
-              className="TagLabel  flex justify-center"
+              className="TagLabel  flex justify-center "
             >
               <TagLabel className="">{tag}</TagLabel>
               <TagCloseButton
