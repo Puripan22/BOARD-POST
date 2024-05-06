@@ -54,7 +54,7 @@ export default function Home() {
             { tag_: newTag }
           );
           console.log("Posts found by tag:", response.data);
-          setSearchedPosts(response.data);
+          setSearchedPosts([...searchedPosts, ...response.data]);
         } catch (error) {
           console.error("Error searching for posts by tag:", error);
         }
@@ -64,6 +64,7 @@ export default function Home() {
 
   const handleDelete = (tagToDelete: string) => {
     setTags(tags.filter((tag) => tag !== tagToDelete));
+    setSearchedPosts(searchedPosts.filter((post) => post.tag !== tagToDelete));
   };
 
   //const [selected, setSelected] = useState([]);
@@ -80,7 +81,7 @@ export default function Home() {
                 borderRadius="full"
                 variant="solid"
                 colorScheme="teal"
-                className="TagLabel  flex justify-center bg-gradient-to-br from-red-500 to-red-400 border-small border-white/50 shadow-red-500/10"
+                className="TagLabel  h-full flex justify-center  items-center bg-gradient-to-br from-red-500 to-red-400 border-small border-white/50 shadow-red-500/10"
               >
                 <TagLabel className="">{tag}</TagLabel>
                 <TagCloseButton

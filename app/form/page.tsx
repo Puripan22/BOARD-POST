@@ -1,16 +1,8 @@
 "use client";
-import { Link } from "@nextui-org/link";
-import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code";
-import { button as buttonStyles, user } from "@nextui-org/theme";
-import { siteConfig } from "@/config/site";
-import { GithubIcon } from "@/components/icons";
-import { SearchIcon } from "@/components/icons";
 import { Input } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
 import { Textarea } from "@nextui-org/input";
 import { Card } from "@nextui-org/card";
-import TagInput from "@/components/TagInput";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -110,19 +102,19 @@ export default function FormPage() {
               borderRadius="full"
               variant="solid"
               colorScheme="teal"
-              className="TagLabel  flex justify-center items-center "
+              className="TagLabel  h-full flex justify-center  items-center bg-gradient-to-br from-red-500 to-red-400 border-small border-white/50 shadow-red-500/10 "
             >
               <TagLabel className="">{tag}</TagLabel>
               <TagCloseButton
-                className="TagCloseButton"
+                className="TagCloseButton justify-center items-center flex"
                 onClick={() => handleDelete(tag)}
               />
             </Tag>
           ))}
           <Input
-            placeholder="tags"
+            placeholder="tags "
             onKeyDown={handleKeyDown}
-            className=""
+            className="justify-center  flex"
             onChange={(e) => setTag(e.target.value)}
           />
         </Card>

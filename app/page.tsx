@@ -18,7 +18,6 @@ import Link from "next/link";
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [posts, setPosts] = useState("");
-  const [searchedPosts, setSearchedPosts] = useState<any[]>([]);
 
   useEffect(() => {
     axios
@@ -37,37 +36,6 @@ export default function Home() {
         post.title.toLowerCase().includes(searchTerm.toLowerCase())
       )
     : [];
-
-  const [tags, setTags] = useState<string[]>([]);
-
-  const handleKeyDown = async (
-    event: React.KeyboardEvent<HTMLInputElement>
-  ) => {
-    if (event.key === "Enter") {
-      const newTag = event.currentTarget.value.trim();
-      console.log(newTag);
-      if (newTag) {
-        setTags([...tags, newTag]);
-        event.currentTarget.value = "";
-        try {
-          const response = await axios.post(
-            "http://localhost:8000/api/Search",
-            { tag_: newTag }
-          );
-          console.log("Posts found by tag:", response.data);
-          setSearchedPosts(response.data);
-        } catch (error) {
-          console.error("Error searching for posts by tag:", error);
-        }
-      }
-    }
-  };
-
-  const handleDelete = (tagToDelete: string) => {
-    setTags(tags.filter((tag) => tag !== tagToDelete));
-  };
-
-  //const [selected, setSelected] = useState([]);
 
   return (
     <div className="flex flex-col items-center justify-center h-full w-full ">

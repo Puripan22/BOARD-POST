@@ -103,7 +103,7 @@ export default function SignupPage() {
               href="/sigin"
               onClick={handleSubmit}
             >
-              Sign in
+              Sign up
             </Button>
           </Link>
         </div>
