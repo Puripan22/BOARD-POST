@@ -1,9 +1,7 @@
 # How to run my project
 
 ```bast
-git init
-git remote add origin 
-git pull origin main
+git clone https://github.com/Puripan22/Project-WebSite-CPE204.git
 ```
 
 #install this
