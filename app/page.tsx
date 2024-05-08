@@ -18,6 +18,7 @@ import Link from "next/link";
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [posts, setPosts] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
@@ -25,9 +26,11 @@ export default function Home() {
       .then((response) => {
         console.log(response.data);
         setPosts(response.data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
+        setIsLoading(false);
       });
   }, []);
 
@@ -57,18 +60,26 @@ export default function Home() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          
+
           <Card className="box-anim m-4 h-14 w-2/3 p-2 flex flex-col flex-wrap justify-center items-center mt-12 cursor-pointer">
-            <Link href="/blog" className="  justify-center items-center text-xl font-extralight">
-            CATEGORY
+            <Link
+              href="/blog"
+              className="  justify-center items-center text-xl font-extralight h-full  w-full flex"
+            >
+              CATEGORY
             </Link>
           </Card>
-          
+
           <Card className=" h-56 w-3/4 mt-24">
             <Slideshow />
           </Card>
         </Card>
         <div className="w-3/4 flex flex-wrap  border-gray-500 border-2 border-l-0 justify-center  max-h-full rounded-xl rounded-l-none ">
+          {isLoading && (
+            <div className="flex items-center justify-center">
+              <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+            </div>
+          )}
           {filteredPosts &&
             filteredPosts.map((post) => (
               <Card key={post.id} className="Post m-11">
@@ -91,18 +102,16 @@ export default function Home() {
                   </div>
                 </CardHeader>
                 <CardBody className="CardBody">
-                  <p className=" overflow-y-auto flex flex-warp">{post.content}</p>
+                  <p className=" overflow-y-auto flex flex-warp">
+                    {post.content}
+                  </p>
                 </CardBody>
 
                 <p className="pb-4 pl-4 text-sm text-gray-500 flex justify-end pr-4">
                   Posted by {post.by}
                 </p>
               </Card>
-            ))}     
-           
-            
-          
-            
+            ))}
         </div>
       </div>
     </div>
