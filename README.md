@@ -17,6 +17,7 @@ npm install
 ```bash
 cd server
 npm start
+```
 
 if you in folder server
 ```bash
