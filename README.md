@@ -23,6 +23,7 @@ if you in folder server
 ```bash
 cd ..
 ```
+Run website
 ```bash
 npm run dev
 ```
