@@ -1,8 +1,10 @@
 # How to run my project
 
+```bast
 git init
 git remote add origin 
 git pull origin main
+```
 
 
 ```bash
