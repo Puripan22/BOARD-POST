@@ -1,23 +1,25 @@
 # How to run my project
-
+1.create your folder and open it on VScode (สร้างโฟล์เดอร์และเปิดโฟล์เดอร์ใน VScode)
+2.open your terminal ( Ctrl + Shift + `) and clone my project (เปิดตัวของ Terminal ขึ้นมาแล้ว พิมพ์ คำสั่งเข้าไปในการ clone โปรเจ็ค)
 ```bast
 git clone https://github.com/Puripan22/CPE204.git
 ```
-open your terminal
-install this
-
-
+3.cd folder project and install (เข้าถึงโฟล์เดอร์ข้างในแล้ว install )
+```bash
+cd CPE204
+```
 ```bash
 npm install
 ```
-open new terminal
-Run server
+4.Split your Terminal ( Ctrl + Shift + 5) and use 1 site run server by commmand this (สร้าง terminal ออกมาอีกตัวแล้วเลือกฝั่งนึงรันเซิฟเวอร์โดยคำสั่งนี้)
 ```bash
 cd server
 npm start
 ```
-
-Run website on old terninal
+```bash
+npm start
+```
+5.Run website on another terminal by command this ( แล้วอีกฝั่งรันในส่วนของ website ด้วยคำสั่งนี้)
 ```bash
 npm run dev
 ```
