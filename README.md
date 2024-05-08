@@ -25,6 +25,8 @@ npm start
 npm run dev
 ```
 
+pls wait when you change page in a first time ( กรุณารอในตอนที่ต้องการเปลี่ยนหรือคลิกเปลี่ยนหน้าในตอนที่เปลี่ยนครั้งแรก)
+
 ### Setup pnpm (optional)
 
 If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
