@@ -1,7 +1,7 @@
 # How to run my project
 
 ```bast
-git clone https://github.com/Puripan22/Project-WebSite-CPE204.git
+git clone https://github.com/Puripan22/CPE204.git
 ```
 open your terminal
 install this
