@@ -3,8 +3,8 @@
 ```bast
 git clone https://github.com/Puripan22/Project-WebSite-CPE204.git
 ```
-
-#install this
+open your terminal
+install this
 
 
 ```bash
