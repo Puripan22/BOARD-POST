@@ -6,13 +6,22 @@ git remote add origin
 git pull origin main
 ```
 
+#install this
+
 
 ```bash
 npm install
 ```
 
 ### Run the development server
+```bash
+cd server
+npm start
 
+if you in folder server
+```bash
+cd ..
+```
 ```bash
 npm run dev
 ```
