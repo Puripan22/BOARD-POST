@@ -12,7 +12,7 @@ cd CPE204
 ```bash
 npm install
 ```
-4.Split your Terminal ( Ctrl + Shift + 5 ) and use 1 site run server by commmand this (สร้าง terminal ออกมาอีกตัวแล้วเลือกฝั่งนึงรันเซิฟเวอร์โดยคำสั่งนี้)
+4.Split your Terminal ( Ctrl + Shift + 5 ) and use 1 Terminal run server by commmand this (สร้าง terminal ออกมาอีกตัวด้วยการ Split แล้วเลือกฝั่งนึงรันเซิฟเวอร์โดยคำสั่งนี้)
 ```bash
 cd server
 npm start
