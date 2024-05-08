@@ -10,18 +10,14 @@ install this
 ```bash
 npm install
 ```
-
-### Run the development server
+open new terminal
+Run server
 ```bash
 cd server
 npm start
 ```
 
-if you in folder server
-```bash
-cd ..
-```
-Run website
+Run website on old terninal
 ```bash
 npm run dev
 ```
