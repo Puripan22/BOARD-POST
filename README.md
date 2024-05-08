@@ -1,5 +1,6 @@
 # How to run my project
 1.create your folder and open it on VScode (สร้างโฟล์เดอร์และเปิดโฟล์เดอร์ใน VScode)
+
 2.open your terminal ( Ctrl + Shift + ` ) and clone my project (เปิดตัวของ Terminal ขึ้นมาแล้ว พิมพ์ คำสั่งเข้าไปในการ clone โปรเจ็ค)
 ```bast
 git clone https://github.com/Puripan22/CPE204.git
