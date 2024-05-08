@@ -25,7 +25,7 @@ export default function LoginPage() {
         password,
       });
 
-      if (response) {
+      if (response.data === user) {
         localStorage.setItem("username", username);
         Swal.fire({
           icon: "success",

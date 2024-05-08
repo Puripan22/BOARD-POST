@@ -5,6 +5,7 @@ const { Collection } = require("mongodb");
 const jwt = require("jsonwebtoken");
 const env = require("dotenv");
 
+
 exports.signup = async (req, res) => {
   try {
     const { username, email, password } = req.body;
