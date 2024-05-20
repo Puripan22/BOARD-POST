@@ -3,7 +3,7 @@
 
 2.open your terminal ( Ctrl + Shift + ` ) and clone my project (เปิดตัวของ Terminal ขึ้นมาแล้ว พิมพ์ คำสั่งเข้าไปในการ clone โปรเจ็ค)
 ```bast
-git clone https://github.com/Puripan22/CPE204.git
+git clone https://github.com/Puripan22/BOARD-POST.git
 ```
 3.cd folder project and install (เข้าถึงโฟล์เดอร์ข้างในแล้ว install ) // cd เข้าตามชื่อFolder ไม่แน่ใจระหว่าง BOARD-POST หรือ CPE204 
 ```bash
