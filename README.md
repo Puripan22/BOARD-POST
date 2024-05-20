@@ -7,7 +7,7 @@ git clone https://github.com/Puripan22/CPE204.git
 ```
 3.cd folder project and install (เข้าถึงโฟล์เดอร์ข้างในแล้ว install )
 ```bash
-cd CPE204
+cd BOARD-POST
 ```
 ```bash
 npm install
