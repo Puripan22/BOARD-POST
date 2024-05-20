@@ -5,25 +5,26 @@
 ```bast
 git clone https://github.com/Puripan22/CPE204.git
 ```
-3.cd folder project and install (เข้าถึงโฟล์เดอร์ข้างในแล้ว install ) // cd เข้าตามชื่อFolder ไม่แน่ใจระหว่าง BOARD-POST หรือ CPE204
+3.cd folder project and install (เข้าถึงโฟล์เดอร์ข้างในแล้ว install ) // cd เข้าตามชื่อFolder ไม่แน่ใจระหว่าง BOARD-POST หรือ CPE204 
 ```bash
-cd CPE204
+cd CPE204 or cd BOARD-POST
 ```
-or
-```bash
-cd BOARD-POST
-```
+ตามชื่อโฟล์เดอร์
 ```bash
 npm install
 ```
-4.Split your Terminal ( Ctrl + Shift + 5 ) and use 1 Terminal run server by commmand this (สร้าง terminal ออกมาอีกตัวด้วยการ Split แล้วเลือกฝั่งนึงรันเซิฟเวอร์โดยคำสั่งนี้)
+4.Split your Terminal ( Ctrl + Shift + 5 ) and use new Terminal run server by commmand this (สร้าง terminal ออกมาอีกตัวด้วยการ Split แล้วใช้ terminal ตัวใหม่ที่สร้างออกมารันเซิฟเวอร์โดยคำสั่งนี้)
+```bash
+cd CPE204 or cd BOARD-POST
+```
+ตามชื่อโฟล์เดอร์
 ```bash
 cd server
 ```
 ```bash
 npm start
 ```
-5.Run website on another terminal by command this ( แล้วอีกฝั่งรันในส่วนของ website ด้วยคำสั่งนี้)
+5.Run website on another terminal by command this ( แล้วอีกฝั่งเดิม Run website ด้วยคำสั่งนี้)
 ```bash
 npm run dev
 ```
